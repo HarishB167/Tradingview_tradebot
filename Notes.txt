@@ -1,0 +1,39 @@
+Chrome developer protocol
+Ref : https://www.youtube.com/watch?v=FVumnHy5Tzo
+google-chrome --remote-debugging-port=8797 --user-data-dir=<some directory>
+
+my_project/
+|
++-- config/
+|   |
+|   +-- __init__.py
+|   +-- settings.py
+|
++-- drivers/
+|   |
+|   +-- __init__.py
+|   +-- chrome.py
+|   +-- firefox.py
+|
++-- pages/
+|   |
+|   +-- __init__.py
+|   +-- home_page.py
+|   +-- login_page.py
+|   +-- product_page.py
+|
++-- tests/
+|   |
+|   +-- __init__.py
+|   +-- test_login.py
+|   +-- test_search.py
+|
++-- utils/
+|   |
+|   +-- __init__.py
+|   +-- test_utils.py
+|   +-- web_utils.py
+|
++-- .gitignore
++-- requirements.txt
++-- run_tests.py
