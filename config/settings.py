@@ -1,3 +1,6 @@
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 BASE_URL = "https://www.tradingview.com/"
 

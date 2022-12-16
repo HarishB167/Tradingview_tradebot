@@ -1,3 +1,5 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -6,19 +8,20 @@ from selenium.webdriver.support import expected_conditions as EC
 class ChartPage:
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, 20)        
+        self.wait = WebDriverWait(self.driver, 40)        
         
     # Locators
-    _search_box = "button.tv-header-search-container"
-    _search_input = "input[name=query]"    
+    _account_div = "div.js-account-manager-header > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)"
     
-    def enter_search_term(self, search_term):
-        search_bar = self.driver.find_element_by_css_selector(self._search_box)
-        search_bar.click()        
-        search_input = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, self._search_input)))
-        search_input.send_keys(search_term)
+    def get_account_balance(self):
+        logging.info("ChartPage.get_account_balance")
+        account_div = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, self._account_div)))
+        balance = float(account_div.text.replace(" ",""))
+        print("Account balance : ", balance)
+    
+    def buy_trade(self):
+        pass
 
-    def do_search(self):
-        search_input = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, self._search_input)))
-        search_input.send_keys(Keys.ENTER)
+    def sell_trade(self):
+        pass
         

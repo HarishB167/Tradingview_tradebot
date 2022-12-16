@@ -1,3 +1,5 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -13,12 +15,14 @@ class HomePage:
     _search_input = "input[name=query]"    
     
     def enter_search_term(self, search_term):
+        logging.info("HomePage.enter_search_term")
         search_bar = self.driver.find_element_by_css_selector(self._search_box)
         search_bar.click()        
         search_input = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, self._search_input)))
         search_input.send_keys(search_term)
 
     def do_search(self):
+        logging.info("HomePage.do_search")
         search_input = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, self._search_input)))
         search_input.send_keys(Keys.ENTER)
         
